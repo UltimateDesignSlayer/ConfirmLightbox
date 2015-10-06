@@ -14,7 +14,7 @@
 		
 		<input type="text" id="textField" />
 		
-		<script>
+		<script>		
 			function okOnBtn(){
 				window.location = "http://www.google.com";
 			}
@@ -30,16 +30,17 @@
 				console.log("clicked cancel ");
 			}
 			
-			var calcNotCompleteLB = new ConfirmLightbox(calcNotCompleteMessage, calcNotCompleteHeader, function(){alert("anon func"); window.location = "http://www.google.com";});
+			var calcNotCompleteLB = new ConfirmLightbox("Your calculation is not complete. Are you sure you want to continue?", "Are you sure??", function(){alert("anon func"); window.location = "http://www.google.com";});
 		
-			var updatingPDPCalc = new ConfirmLightbox(updatingPDPCalcMessage, updatingPDPCalcHeader, okOnFocusInput, cancelInput);
+			var updatingPDPCalc = new ConfirmLightbox("Are you sure you want to update this field? This will change the value of the field!", "Input Selected!", okOnFocusInput, cancelInput);
 		
 			document.addEventListener("DOMContentLoaded", function(event) {
+				
 				document.getElementById("btn").addEventListener("click", function(){
 					calcNotCompleteLB.createBox();				
 				});	
 				
-				//Only show the confirm box once for the field
+				//Only show the confirm box once for the field - thats what this counter is for
 				var noOfTimesFieldClickedOn = 0;			
 				document.getElementById("textField").addEventListener("click", function(){
 					if (noOfTimesFieldClickedOn === 0){
