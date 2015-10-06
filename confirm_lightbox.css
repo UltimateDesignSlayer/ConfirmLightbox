@@ -1,0 +1,54 @@
+/* Responsive confirm box */
+
+#calcLightboxBackground{
+	position:fixed;
+	top:0;
+	left:0;
+	background:rgba(0,0,0,0.5);
+	width:100%;
+	height:100%;
+	z-index:5;
+}
+
+#calcLightboxContainer{
+	background:#f2f2f2;
+	position:absolute;				
+	width:70%;
+	max-width:500px;
+	z-index:10;
+	padding:10px 15px;
+	
+	/*Centralise*/
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+	
+	#calcLightboxContainer #msgContainer h1{
+		margin:0;
+		padding:10px 0;
+		text-align:center;
+		border-bottom: 1px solid #ccc;
+		colour:#ff0000;
+	}
+	
+	#calcLightboxContainer #msgContainer p{
+		margin:10px 0;
+		text-align:center;
+	}
+	
+	#calcLightboxContainer #btnContainer > div {
+		width: 49%;
+		text-align: center;
+		padding: 10px 0;
+		cursor: pointer;
+		background:#ccc;
+	}
+	
+	#calcLightboxContainer #btnContainer #calcCancelBtn{
+		float: left;
+	}
+	
+	#calcLightboxContainer #btnContainer #calcOKBtn{
+		float: right;
+	}

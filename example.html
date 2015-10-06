@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+		<title>Test Lightbox</title>
+		
+		<link href="confirm_lightbox.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="confirm_lightbox.js"></script>
+		
+	</head>
+	<body>
+		
+		<button id="btn">CLICK HERE</button>
+		
+		<input type="text" id="textField" />
+		
+		<script>
+			function okOnBtn(){
+				window.location = "http://www.google.com";
+			}
+			
+			//When confirm box OK clicked
+			function okOnFocusInput(){
+				document.getElementById("textField").focus();
+			}
+			
+			//When confirm box Cancel clicked
+			function cancelInput(){
+				document.getElementById("textField").blur();
+				console.log("clicked cancel ");
+			}
+			
+			var calcNotCompleteLB = new ConfirmLightbox(calcNotCompleteMessage, calcNotCompleteHeader, function(){alert("anon func"); window.location = "http://www.google.com";});
+		
+			var updatingPDPCalc = new ConfirmLightbox(updatingPDPCalcMessage, updatingPDPCalcHeader, okOnFocusInput, cancelInput);
+		
+			document.addEventListener("DOMContentLoaded", function(event) {
+				document.getElementById("btn").addEventListener("click", function(){
+					calcNotCompleteLB.createBox();				
+				});	
+				
+				//Only show the confirm box once for the field
+				var noOfTimesFieldClickedOn = 0;			
+				document.getElementById("textField").addEventListener("click", function(){
+					if (noOfTimesFieldClickedOn === 0){
+						updatingPDPCalc.createBox();
+						noOfTimesFieldClickedOn++;
+					}
+				});
+			});
+		
+		</script>
+		
+	</body>
+</html>
