@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+		<title>Test Lightbox</title>
+		
+		<link href="lightbox.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="lightbox.js"></script>
+		
+	</head>
+	<body>
+		
+		<button id="btn">GO TO GOOGLE</button>
+		
+		<br />
+		<br />
+		
+		<input type="text" id="textField" />
+		
+		<br />
+		<br />
+		
+		<button id="alertbtn">ALERT BUTTON</button>
+		
+		<script>		
+			//Leaving site button
+			function okOnBtn(){
+				window.location = "http://www.google.com";
+			}			
+			
+			var leavingSiteConfirm = new Lightbox("confirm", "You're about to be taken away from this site. Are you sure you want to leave?", "Leaving already?", okOnBtn);
+			
+			//Input clicked on
+			//When confirm box OK clicked
+			var noOfTimesFieldClickedOn = 0;
+			function okOnFocusInput(){
+				document.getElementById("textField").focus();
+				noOfTimesFieldClickedOn++;
+			}
+			
+			//When confirm box Cancel clicked
+			function cancelInput(){
+				document.getElementById("textField").blur();
+				console.log("clicked cancel ");
+			}
+			
+			var updatingField = new Lightbox("confirm", "Are you sure you want to update this field? This will change the value of the field!", "Input Selected", okOnFocusInput, cancelInput);
+			
+			//Alert box when alert button clicked
+			var myAlertBox = new Lightbox("alert", "This is a message to notify you of something.", "ALERT!", function(){
+				console.log("Alert OK clicked");
+			});
+		
+			document.addEventListener("DOMContentLoaded", function(event) {
+				//GOOGLE button				
+				document.getElementById("btn").addEventListener("click", function(){
+					leavingSiteConfirm.createBox();				
+				});	
+				
+				//Only show the confirm box once for the field - thats what this counter is for							
+				document.getElementById("textField").addEventListener("click", function(){
+					if (noOfTimesFieldClickedOn === 0){
+						updatingField.createBox();
+					}
+				});
+				
+				//To show alert
+				document.getElementById("alertbtn").addEventListener("click", function(){
+					myAlertBox.createBox();	
+				});	
+			});
+		
+		</script>
+		
+	</body>
+</html>
