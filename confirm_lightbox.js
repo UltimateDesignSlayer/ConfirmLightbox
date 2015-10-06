@@ -85,12 +85,12 @@ ConfirmLightbox.prototype.createBox = function(){
 	this.cancelBtn = document.createElement("div");
 	this.okBtn = document.createElement("div");
 	
-	this.lightboxContainer.id = "calcLightboxContainer";
+	this.lightboxContainer.id = "lightboxContainer";
 	this.msgContainer.id = "msgContainer";
 	this.btnContainer.id = "btnContainer";
-	this.background.id = "calcLightboxBackground";
-	this.cancelBtn.id = "calcCancelBtn";
-	this.okBtn.id = "calcOKBtn";
+	this.background.id = "lightboxBackground";
+	this.cancelBtn.id = "cancelBtn";
+	this.okBtn.id = "OKBtn";
 	
 	this.headerContainer.innerHTML = this.header;
 	this.msg.innerHTML = this.message;

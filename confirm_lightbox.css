@@ -1,6 +1,6 @@
 /* Responsive confirm box */
 
-#calcLightboxBackground{
+#lightboxBackground{
 	position:fixed;
 	top:0;
 	left:0;
@@ -10,7 +10,8 @@
 	z-index:5;
 }
 
-#calcLightboxContainer{
+#lightboxContainer{
+	font-family:arial;
 	background:#f2f2f2;
 	position:absolute;				
 	width:70%;
@@ -24,20 +25,20 @@
 	transform: translate(-50%, -50%);
 }
 	
-	#calcLightboxContainer #msgContainer h1{
+	#lightboxContainer #msgContainer h1{
 		margin:0;
 		padding:10px 0;
 		text-align:center;
 		border-bottom: 1px solid #ccc;
-		colour:#ff0000;
+		color:#ff0000;
 	}
 	
-	#calcLightboxContainer #msgContainer p{
+	#lightboxContainer #msgContainer p{
 		margin:10px 0;
 		text-align:center;
 	}
 	
-	#calcLightboxContainer #btnContainer > div {
+	#lightboxContainer #btnContainer > div {
 		width: 49%;
 		text-align: center;
 		padding: 10px 0;
@@ -45,10 +46,10 @@
 		background:#ccc;
 	}
 	
-	#calcLightboxContainer #btnContainer #calcCancelBtn{
+	#lightboxContainer #btnContainer #cancelBtn{
 		float: left;
 	}
 	
-	#calcLightboxContainer #btnContainer #calcOKBtn{
+	#lightboxContainer #btnContainer #OKBtn{
 		float: right;
 	}
