@@ -4,24 +4,37 @@
 	
 		<title>Test Lightbox</title>
 		
-		<link href="confirm_lightbox.css" rel="stylesheet" type="text/css" />
+		<link href="lightbox.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="confirm_lightbox.js"></script>
+		<script type="text/javascript" src="alert_lightbox.js"></script>
 		
 	</head>
 	<body>
 		
-		<button id="btn">CLICK HERE</button>
+		<button id="btn">GO TO GOOGLE</button>
 		
+		<br />
+		<br />
 		<input type="text" id="textField" />
 		
+		<br />
+		<br />
+		<button id="alertbtn">ALERT BUTTON</button>
+		
 		<script>		
+			//Leaving site button
 			function okOnBtn(){
 				window.location = "http://www.google.com";
-			}
+			}			
 			
+			var leavingSiteConfirm = new ConfirmLightbox("You're about to be taken away from this site. Are you sure you want to leave?", "Leaving already?", okOnBtn);
+			
+			//Input clicked on
 			//When confirm box OK clicked
+			var noOfTimesFieldClickedOn = 0;
 			function okOnFocusInput(){
 				document.getElementById("textField").focus();
+				noOfTimesFieldClickedOn++;
 			}
 			
 			//When confirm box Cancel clicked
@@ -30,24 +43,30 @@
 				console.log("clicked cancel ");
 			}
 			
-			var calcNotCompleteLB = new ConfirmLightbox("Your calculation is not complete. Are you sure you want to continue?", "Are you sure??", function(){alert("anon func"); window.location = "http://www.google.com";});
-		
-			var updatingPDPCalc = new ConfirmLightbox("Are you sure you want to update this field? This will change the value of the field!", "Input Selected!", okOnFocusInput, cancelInput);
+			var updatingField = new ConfirmLightbox("Are you sure you want to update this field? This will change the value of the field!", "Input Selected", okOnFocusInput, cancelInput);
+			
+			//Alert box when alert button clicked
+			var myAlertBox = new AlertLightbox("This is a message to notify you of something.", "ALERT!", function(){
+				console.log("Alert OK clicked");
+			});
 		
 			document.addEventListener("DOMContentLoaded", function(event) {
-				
+				//GOOGLE button				
 				document.getElementById("btn").addEventListener("click", function(){
-					calcNotCompleteLB.createBox();				
+					leavingSiteConfirm.createBox();				
 				});	
 				
-				//Only show the confirm box once for the field - thats what this counter is for
-				var noOfTimesFieldClickedOn = 0;			
+				//Only show the confirm box once for the field - thats what this counter is for							
 				document.getElementById("textField").addEventListener("click", function(){
 					if (noOfTimesFieldClickedOn === 0){
-						updatingPDPCalc.createBox();
-						noOfTimesFieldClickedOn++;
+						updatingField.createBox();
 					}
 				});
+				
+				//To show alert
+				document.getElementById("alertbtn").addEventListener("click", function(){
+					myAlertBox.createBox();	
+				});	
 			});
 		
 		</script>

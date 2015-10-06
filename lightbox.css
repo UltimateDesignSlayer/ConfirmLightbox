@@ -53,3 +53,7 @@
 	#lightboxContainer #btnContainer #OKBtn{
 		float: right;
 	}
+	
+	#lightboxContainer #btnContainer #fullWidthOKBtn{
+		width:100%;
+	}
